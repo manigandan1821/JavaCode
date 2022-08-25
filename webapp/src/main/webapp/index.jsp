@@ -1,7 +1,7 @@
 
 
   <div class="block1">
-    <h1 style="text-align: center;">Congratulations Shital!</h1>
+    <h1 style="text-align: center;">Congratulations</h1>
     <h1 style="text-align: center;">You have successfully deployed your <strong>war</strong> file to Nexus Repo and Tomcat.</h1>
     <BR>
     <h2 style="text-align: center;"></h2>
