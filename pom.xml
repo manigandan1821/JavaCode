@@ -162,18 +162,6 @@
     </pluginManagement>
   </build>
 
-dependencies {
-classpath "org.sonarsource.scanner.gradle: sonarqube-gradle-plugin:2.5"
-}
-
-sonarqube {
-properties {
-property "sonar.host.url", http://3.91.17.212:9000/
-property "sonar.projectName", "Jenkins"   
-property "sonar.projectKey", "Jenkins" 
-property "sonar.groovy.jacoco.reportPath", "${project.buildDir}/jacoco/test.exec"    }
-}
-
   <dependencyManagement>
     <dependencies>
       <dependency>
