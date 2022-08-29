@@ -12,10 +12,10 @@ pipeline {
         }
    }
 }
-
 	stage('SonarQube Analysis') {
-	  def mvnHome = tool name: 'M2', type: 'maven'
-	  withSonarQubeEnv('sonar') {
-	    sh "${mvnHome}/bin/mvn sonar:sonar"
-	  }
-     }
+            steps {
+              withSonarQubeEnv('sonar') {
+                 sh "mvn clean verify sonar:sonar"
+                 }
+             }
+         }
