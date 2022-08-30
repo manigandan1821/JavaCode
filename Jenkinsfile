@@ -3,14 +3,38 @@ pipeline {
     tools {
     maven 'M2'
     }
-    stages {
-        stage ('Build') {
+stages {
+        stage('checkout') {
             steps {
                 git 'https://github.com/manigandan1821/JavaCode.git'
-                sh 'mvn clean package'
             }
         }
-        stage('Upload to nexus') {
+        stage('build') {
+            steps {
+                sh 'mvn clean install'
+            }
+        }
+
+	stage('SonarQube Analysis') {
+            steps {
+              withSonarQubeEnv('sonar') {
+                 sh "mvn clean verify sonar:sonar"
+                 }
+             }
+	}
+	stage('Execute Sonarqube Report')  {
+          steps {
+             withSonarQubeEnv('sonar') {
+                 sh "mvn sonar:sonar"
+              }  
+          }
+      }
+      stage('Quality Gate Check') {
+          steps {
+                 waitForQualityGate abortPipeline: true
+          }
+      }
+	stage('Upload to nexus') {
 	      steps {
               nexusArtifactUploader artifacts: [
                   [
