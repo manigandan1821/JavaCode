@@ -1,7 +1,7 @@
 
 
   <div class="block1">
-    <h1 style="text-align: center;">Congratulations Team</h1>
+    <h1 style="text-align: center;">Congratulations Team members</h1>
     <h1 style="text-align: center;">Java application deployed succesfully on tomcat server<strong>java application</strong></h1>
     <BR>
     <h2 style="text-align: center;"></h2>
