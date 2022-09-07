@@ -52,7 +52,7 @@ stages {
                 ], 
                 credentialsId: 'admin', 
                 groupId: 'com.example.maven-project', 
-                nexusUrl: '18.212.225.158:8081', 
+                nexusUrl: '54.227.122.86:8081', 
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
                 repository: 'App_Release', 
