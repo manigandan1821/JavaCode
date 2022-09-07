@@ -56,7 +56,7 @@ stages {
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
                 repository: 'App_Release', 
-                version: '1.0.0'
+                version: '3.0.0'
             }
         }
 
