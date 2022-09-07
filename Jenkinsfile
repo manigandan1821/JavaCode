@@ -14,7 +14,13 @@ stages {
                 sh 'mvn clean install'
             }
         }
-
+	stage('E-mail Approval') {
+		steps {
+	    	emailext mimeType: 'text/html', subject: "[Jenkins]${currentBuild.fullDisplayName}",
+	     	to: 'sm9120794@gmail.com',
+	     	body: '''<a href="${BUILD_URL}input">Approval for Dev Environment</a>'''
+	}
+    }
 	stage('SonarQube Analysis') {
             steps {
               withSonarQubeEnv('sonar') {
@@ -50,12 +56,14 @@ stages {
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
                 repository: 'App_Release', 
-                version: '2.0.0'
+                version: '1.0.0'
             }
         }
+
+
         stage ('deploy') {
             steps {   
-                deploy adapters: [tomcat9(credentialsId: '11', path: '', url: 'http://54.237.200.106:9090/')], contextPath: 'javaapplication', war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: '11', path: '', url: 'http://54.226.174.58:9090/')], contextPath: 'javaapplication', war: '**/*.war'
             }
         }
     }
