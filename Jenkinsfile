@@ -14,13 +14,6 @@ stages {
                 sh 'mvn clean install'
             }
         }
-	stage('E-mail Approval') {
-		steps {
-	    	emailext mimeType: 'text/html', subject: "[Jenkins]${currentBuild.fullDisplayName}",
-	     	to: 'sm9120794@gmail.com',
-	     	body: '''<a href="${BUILD_URL}input">Approval for Dev Environment</a>'''
-	}
-    }
 	stage('SonarQube Analysis') {
             steps {
               withSonarQubeEnv('sonar') {
@@ -59,7 +52,13 @@ stages {
                 version: '3.0.0'
             }
         }
-
+	stage('E-mail Approval') {
+		steps {
+	    	emailext mimeType: 'text/html', subject: "[Jenkins]${currentBuild.fullDisplayName}",
+	     	to: 'sm9120794@gmail.com',
+	     	body: '''<a href="${BUILD_URL}input">Approval for Dev Environment</a>'''
+	}
+    }
 
         stage ('deploy') {
             steps {   
