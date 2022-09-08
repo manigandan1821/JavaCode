@@ -30,7 +30,7 @@ stages {
       }
       stage('Quality Gate Check') {
           steps {
-                 waitForQualityGate abortPipeline: true
+                 waitForQualityGate abortPipeline: false
           }
       }
 	stage('Upload to nexus') {
