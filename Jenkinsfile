@@ -66,10 +66,10 @@ stages {
 			tomcat9(
 				credentialsId: '11', 
 				path: '', 
-				url: 'http://54.234.39.168:9090/'
+				url: 'http://54.234.39.168:9090'
 			)
 		], 
-		contextPath: 'webapps', 
+		contextPath: 'web1', 
 		war: '**/*.war'
             }
         }
