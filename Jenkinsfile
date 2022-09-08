@@ -49,7 +49,7 @@ stages {
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
                 repository: 'App_Release', 
-                version: '4.0.0'
+                version: '1.0.0'
             }
         }
 	stage('E-mail Approval') {
@@ -62,15 +62,7 @@ stages {
 
         stage ('deploy') {
             steps {   
-                deploy adapters: [
-			tomcat9(
-				credentialsId: '11', 
-				path: '', 
-				url: 'http://54.234.39.168:9090'
-			)
-		], 
-		contextPath: 'web1', 
-		war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: '11', path: '', url: 'http://54.234.39.168:9090/')], contextPath: 'webapps', war: 'webapp/target/*.war'
             }
         }
     }
