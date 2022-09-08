@@ -70,7 +70,7 @@ stages {
 			)
 		], 
 		contextPath: 'webapps', 
-		war: 'webapp/target/*.war'
+		war: '**/*.war'
             }
         }
     }
