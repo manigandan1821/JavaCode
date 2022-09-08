@@ -49,7 +49,7 @@ stages {
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
                 repository: 'App_Release', 
-                version: '3.0.0'
+                version: '4.0.0'
             }
         }
 	stage('E-mail Approval') {
@@ -70,7 +70,7 @@ stages {
 			)
 		], 
 		contextPath: 'webapps', 
-		war: 'webapps/target/*.war'
+		war: 'webapp/target/*.war'
             }
         }
     }
