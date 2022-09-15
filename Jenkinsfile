@@ -45,24 +45,25 @@ stages {
                 ], 
                 credentialsId: 'admin', 
                 groupId: 'com.example.maven-project', 
-                nexusUrl: '54.227.122.86:8081', 
+                nexusUrl: '52.90.164.246:8081', 
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
                 repository: 'App_Release', 
-                version: '1.0.0'
+                version: '8.0.0'
             }
         }
 	stage('E-mail Approval') {
 		steps {
 	    	emailext mimeType: 'text/html', subject: "[Jenkins]${currentBuild.fullDisplayName}",
 	     	to: 'sm9120794@gmail.com',
-	     	body: '''<h1>Approval for Dev Environment</h1>'''
+	     	body: '''<a href="${BUILD_URL}input">Approval for Dev Environment</a>'''
 	}
     }
 
         stage ('deploy') {
             steps {   
-                deploy adapters: [tomcat9(credentialsId: '11', path: '', url: 'http://54.234.39.168:9090/')], contextPath: 'webapps', war: 'webapp/target/*.war'
+                sh 'wget --user=admin --password=admin123 http://52.90.164.246:8081/repository/App_Release/com/example/maven-project/maven-project/8.0.0/maven-project-8.0.0.war'
+                deploy adapters: [tomcat9(credentialsId: '10', path: '', url: 'http://18.206.237.87:9090/')], contextPath: 'DEV', war: 'maven-project-8.0.0.war'
             }
         }
     }
