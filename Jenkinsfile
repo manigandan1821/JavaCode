@@ -49,7 +49,7 @@ stages {
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
                 repository: 'App_Release', 
-                version: '13.0.0'
+                version: "${GIT_COMMIT}"
             }
         }
 	stage('E-mail Approval') {
