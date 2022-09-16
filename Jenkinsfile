@@ -39,7 +39,7 @@ stages {
                   [
                       artifactId: 'maven-project', 
                       classifier: '', 
-                      file: 'webapp/target/${GIT_COMMIT}.war', 
+                      file: 'webapp/target/webapp.war', 
                       type: 'war'
                     ]
                 ], 
