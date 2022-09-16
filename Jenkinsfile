@@ -62,8 +62,8 @@ stages {
 
         stage ('deploy') {
             steps {   
-                sh 'wget --user=admin --password=admin123 http://54.147.14.158:8081/repository/App_Release/com/example/maven-project/maven-project/13.0.0/maven-project-13.0.0.war'
-                deploy adapters: [tomcat9(credentialsId: '10', path: '', url: 'http://3.88.104.235:9090/')], contextPath: 'DEV', war: 'maven-project-13.0.0.war'
+                sh 'wget --user=admin --password=admin123 http://54.147.14.158:8081/repository/App_Release/com/example/maven-project/maven-project/${GIT_COMMIT}/maven-project-${GIT_COMMIT}.war
+                deploy adapters: [tomcat9(credentialsId: '10', path: '', url: 'http://3.88.104.235:9090/')], contextPath: 'DEV', war: 'maven-project-${GIT_COMMIT}.war'
             }
         }
     }
