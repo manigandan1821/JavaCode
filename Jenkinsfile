@@ -56,7 +56,7 @@ stages {
 		steps {
 	    	emailext mimeType: 'text/html', subject: "[Jenkins]${currentBuild.fullDisplayName}",
 	     	to: 'sm9120794@gmail.com',
-	     	body: '''<a href="${BUILD_URL}input">Approval for Dev Environment</a>'''
+	     	body: '''<h1>Approval for Dev Environment</h1>'''
 	}
     }
 
