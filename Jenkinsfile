@@ -62,7 +62,7 @@ stages {
 
         stage ('deploy') {
             steps {   
-                artifact= "sh 'wget --user=admin --password=admin123 http://54.147.14.158:8081/repository/App_Release/com/example/maven-project/maven-project/${BUILD_NUMBER}/maven-project-${BUILD_NUMBER}.war'"
+                artifact= sh 'wget --user=admin --password=admin123 http://54.147.14.158:8081/repository/App_Release/com/example/maven-project/maven-project/${BUILD_NUMBER}/maven-project-${BUILD_NUMBER}.war'
                 deploy adapters: [tomcat9(credentialsId: '10', path: '', url: 'http://3.88.104.235:9090/')], contextPath: 'DEV', war: '${artifact}'
             }
         }
