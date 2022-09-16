@@ -45,11 +45,11 @@ stages {
                 ], 
                 credentialsId: 'admin', 
                 groupId: 'com.example.maven-project', 
-                nexusUrl: '52.90.164.246:8081', 
+                nexusUrl: '54.147.14.158:8081', 
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
                 repository: 'App_Release', 
-                version: '10.0.0'
+                version: '11.0.0'
             }
         }
 	stage('E-mail Approval') {
@@ -62,8 +62,8 @@ stages {
 
         stage ('deploy') {
             steps {   
-                sh 'wget --user=admin --password=admin123 http://52.90.164.246:8081/repository/App_Release/com/example/maven-project/maven-project/10.0.0/maven-project-10.0.0.war'
-                deploy adapters: [tomcat9(credentialsId: '10', path: '', url: 'http://18.206.237.87:9090/')], contextPath: 'DEV', war: 'maven-project-10.0.0.war'
+                sh 'wget --user=admin --password=admin123 http://54.147.14.158:8081/repository/App_Release/com/example/maven-project/maven-project/11.0.0/maven-project-11.0.0.war'
+                deploy adapters: [tomcat9(credentialsId: '10', path: '', url: 'http://3.88.104.235:9090/')], contextPath: 'DEV', war: 'maven-project-11.0.0.war'
             }
         }
     }
